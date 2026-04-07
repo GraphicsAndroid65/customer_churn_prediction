@@ -1,0 +1,24 @@
+{
+  "name": "churn_prediction",
+  "version": "1.0.0",
+  "description": "<div align=\"center\">   <img src=\"https://img.shields.io/badge/Machine_Learning-Customer_Churn-blue?style=for-the-badge&logo=scikit-learn\" alt=\"ML Badge\"/>   <img src=\"https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi\" alt=\"FastAPI\"/>   <img src=\"https://img.shields.io/badge/Frontend-HTML%2FCSS%2FJS-e34f26?style=for-the-badge&logo=html5\" alt=\"Frontend\"/>   <img src=\"https://img.shields.io/badge/Deployed-Firebase-FFCA28?style=for-the-badge&logo=firebase\" alt=\"Firebase\"/> </div>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://GraphicsAndroid65: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@github.com/GraphicsAndroid65/customer_churn_prediction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GraphicsAndroid65/customer_churn_prediction/issues"
+  },
+  "homepage": "https://github.com/GraphicsAndroid65/customer_churn_prediction#readme",
+  "dependencies": {
+    "firebase-tools": "^15.13.0"
+  }
+}
