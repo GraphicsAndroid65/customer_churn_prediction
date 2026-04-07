@@ -10,7 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modals = {
         'nav-about-app': document.getElementById('modal-about'),
         'nav-dev-info': document.getElementById('modal-dev'),
-        'nav-settings': document.getElementById('modal-settings')
+        'nav-settings': document.getElementById('modal-settings'),
+        'nav-download': document.getElementById('modal-download')
     };
 
     Object.keys(modals).forEach(linkId => {
