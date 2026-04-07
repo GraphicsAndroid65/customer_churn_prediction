@@ -37,7 +37,18 @@ Acquiring new customers is mathematically 25x more expensive than retaining an e
 2. **Predictive Modeling**: Injected into our Random Forest Classifier, splitting trees until attaining a phenomenal **97.30% Model Accuracy** and a **0.98 F1 Precision Score**.
 3. **Backend Logic**: JobLib deployed the active serialized weights directly into Uvicorn routing processes.
 
-## ⚙️ Local Development
+## 📱 Native Cross-Platform Applications
+We explicitly constructed a **Pure-Native Desktop GUI** (`app_desktop.py`) using CustomTkinter that natively loads the Machine Learning Model locally without any browser/HTML wrappers!
+
+To run it natively on Linux, Windows, or Mac:
+```bash
+pip install customtkinter pandas scikit-learn joblib
+python3 app_desktop.py
+```
+> **Compiling to `.exe` / `.apk` and GitHub Releases:**
+> To generate the standalone Windows `.exe` or Linux binary, run `pyinstaller --onefile app_desktop.py` on your target Operating System. Because compiling Android APKs or Windows binaries directly out of an Ubuntu cloud terminal lacks SDK environments, you must compile these files locally and upload them to the [GitHub Releases](https://github.com/GraphicsAndroid65/customer_churn_prediction/releases) tab. Your web application has been updated with a link pointing directly to this Releases tab for your users.
+
+## ⚙️ Web Application Local Backend
 If you aren't utilizing the Firebase hosted production link, run locally via:
 
 ### 1. Launch Back-end (AI Logic)
