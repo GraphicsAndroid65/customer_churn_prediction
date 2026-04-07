@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Churn Predictor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob-shape blob-1"></div>
+    <div class="blob-shape blob-2"></div>
+
+    <div class="container">
+        <!-- Dashboard Section -->
+        <div class="glass-panel main-panel">
+            <header>
+                <h1>Churn Predictor <span class="badge">AI Powered</span></h1>
+                <p>Analyze customer data and predict retention likelihood in real-time.</p>
+            </header>
+
+            <form id="churn-form">
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="tenure">Tenure (Months)</label>
+                        <input type="number" id="tenure" name="tenure" min="0" max="100" value="12" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="monthly-charges">Monthly Charges ($)</label>
+                        <input type="number" id="monthly-charges" name="monthlyCharges" min="0" step="0.01" value="50.0" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="total-contacts">Total Support Contacts</label>
+                        <input type="number" id="total-contacts" name="totalContacts" min="0" max="50" value="2" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="support-tickets">Open Support Tickets</label>
+                        <input type="number" id="support-tickets" name="supportTickets" min="0" max="20" value="1" required>
+                    </div>
+                </div>
+
+                <div class="input-group contract-group">
+                    <label>Contract Type</label>
+                    <div class="radio-group">
+                        <label class="radio-card">
+                            <input type="radio" name="contractType" value="0" checked>
+                            <div class="card-content">
+                                <span class="title">Month-to-Month</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="contractType" value="1">
+                            <div class="card-content">
+                                <span class="title">1 Year</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="contractType" value="2">
+                            <div class="card-content">
+                                <span class="title">2 Years</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    <span class="btn-text">Predict Churn Risk</span>
+                    <div class="spinner loader"></div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Result Section -->
+        <div class="glass-panel result-panel fade-out" id="result-panel">
+            <h2>Prediction Result</h2>
+            <div class="result-display">
+                <div class="gauge-container">
+                    <svg viewBox="0 0 100 50" class="gauge">
+                        <path class="gauge-bg" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke-width="12"/>
+                        <path class="gauge-value" id="gauge-path" d="M 10 50 A 40 40 0 0 1 90 50" fill="none" stroke-width="12" stroke-dasharray="125" stroke-dashoffset="125"/>
+                    </svg>
+                    <div class="gauge-label"><span id="probability-text">0</span>%</div>
+                </div>
+                <h3 id="churn-status-text">Low Risk</h3>
+                <p id="churn-details" class="details-text">Customer is likely to stay.</p>
+            </div>
+            
+            <!-- Firebase Fake Auth/UI element -->
+            <div class="firebase-footer">
+                &#9889; Powered by Google Firebase & ML
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK Setup -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
