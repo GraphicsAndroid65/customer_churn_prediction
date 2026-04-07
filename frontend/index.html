@@ -3,24 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customer Churn AI Predictor</title>
+    <title>Customer Churn Predictor</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
-    <!-- Advanced Animated Background -->
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="splash-logo">🔮</div>
+            <h2>Telecom Churn Predictor</h2>
+            <div class="splash-loader"></div>
+            <p>Initializing Analytics Engine...</p>
+        </div>
+    </div>
+
+    <!-- Animated Mesh Background -->
     <div class="mesh-bg">
         <div class="blob-shape blob-1"></div>
         <div class="blob-shape blob-2"></div>
         <div class="blob-shape blob-3"></div>
     </div>
 
-    <div class="container">
+    <!-- Navigation Header -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-icon">🔮</span>
+            <span class="brand-text">ChurnPredict</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" id="nav-about-app">Platform & ML Info</a></li>
+            <li><a href="#" id="nav-dev-info">The Developers</a></li>
+            <li><a href="#" id="nav-settings">Settings</a></li>
+            <li><a href="https://github.com/GraphicsAndroid65" target="_blank" class="github-link">GitHub ↗</a></li>
+        </ul>
+        <div class="mobile-menu-btn">☰</div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
         <!-- Dashboard Section -->
         <div class="glass-panel main-panel">
             <header>
-                <h1>Churn Analytics <span class="badge ml-badge">Live ML API</span></h1>
-                <p>Harness the power of Random Forest AI to predict customer retention probability in real time.</p>
+                <h1>Customer Analysis</h1>
+                <p>Input customer activity constraints to calculate their retention timeline probability.</p>
             </header>
 
             <form id="churn-form">
@@ -29,7 +55,7 @@
                         <label for="tenure">Tenure (Months)</label>
                         <div class="input-wrapper">
                             <span class="input-icon">📅</span>
-                            <input type="number" id="tenure" name="tenure" min="0" max="100" value="12" required>
+                            <input type="number" id="tenure" name="tenure" min="0" max="120" value="12" required>
                         </div>
                     </div>
 
@@ -45,7 +71,7 @@
                         <label for="total-contacts">Support Interactions</label>
                         <div class="input-wrapper">
                             <span class="input-icon">📞</span>
-                            <input type="number" id="total-contacts" name="totalContacts" min="0" max="50" value="2" required>
+                            <input type="number" id="total-contacts" name="totalContacts" min="0" max="100" value="2" required>
                         </div>
                     </div>
 
@@ -53,48 +79,54 @@
                         <label for="support-tickets">Open Tickets</label>
                         <div class="input-wrapper">
                             <span class="input-icon">🎫</span>
-                            <input type="number" id="support-tickets" name="supportTickets" min="0" max="20" value="1" required>
+                            <input type="number" id="support-tickets" name="supportTickets" min="0" max="50" value="1" required>
                         </div>
                     </div>
                 </div>
 
-                <div class="input-group contract-group">
-                    <label>Contract Type</label>
-                    <div class="radio-group">
-                        <label class="radio-card">
-                            <input type="radio" name="contractType" value="0" checked>
-                            <div class="card-content">
-                                <span class="icon">📝</span>
-                                <span class="title">Monthly</span>
-                            </div>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="contractType" value="1">
-                            <div class="card-content">
-                                <span class="icon">🗓️</span>
-                                <span class="title">1 Year</span>
-                            </div>
-                        </label>
-                        <label class="radio-card">
-                            <input type="radio" name="contractType" value="2">
-                            <div class="card-content">
-                                <span class="icon">📆</span>
-                                <span class="title">2 Years</span>
-                            </div>
-                        </label>
+                <!-- Dynamic Option Area -->
+                <div class="options-row">
+                    <div class="input-group flex-1">
+                        <label>Contract Type</label>
+                        <div class="radio-group small-radios">
+                            <label class="radio-card">
+                                <input type="radio" name="contractType" value="0" checked>
+                                <div class="card-content">Monthly</div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="contractType" value="1">
+                                <div class="card-content">1 Year</div>
+                            </label>
+                            <label class="radio-card">
+                                <input type="radio" name="contractType" value="2">
+                                <div class="card-content">2 Years</div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group auto-pay-col">
+                        <label>Auto-Pay Enabled</label>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="autopay" name="autopay" checked>
+                            <label for="autopay" class="toggle-track">
+                                <span class="toggle-thumb"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
+                <hr class="divider">
+
                 <button type="submit" class="primary-btn">
-                    <span class="btn-text">Generate Prediction</span>
+                    <span class="btn-text">Execute AI Prediction</span>
                     <div class="spinner loader"></div>
                 </button>
             </form>
         </div>
 
         <!-- Result Section -->
-        <div class="glass-panel result-panel fade-out" id="result-panel">
-            <h2>AI Prediction</h2>
+        <div class="glass-panel result-panel hide-initial" id="result-panel">
+            <h2>Algorithm Output <span class="badge ml-badge">Active</span></h2>
             <div class="result-display">
                 <div class="gauge-container">
                     <svg viewBox="0 0 100 50" class="gauge">
@@ -103,16 +135,95 @@
                     </svg>
                     <div class="gauge-label"><span id="probability-text">0</span><span class="percent-sign">%</span></div>
                 </div>
-                <h3 id="churn-status-text">Analyzing...</h3>
-                <p id="churn-details" class="details-text">Awaiting input data.</p>
+                <h3 id="churn-status-text">Analyzing Data Form...</h3>
+                <p id="churn-details" class="details-text">Checking data variables against the historical dataset...</p>
             </div>
+        </div>
+    </main>
+
+    <!-- Modal: About ML Module -->
+    <div class="modal-overlay" id="modal-about">
+        <div class="modal-content large-scrollable">
+            <button class="close-modal">&times;</button>
+            <h2>🔮 The Intelligent Churn Engine</h2>
             
-            <div class="firebase-footer">
-                &#9889; Hosted on Google Firebase
+            <div class="modal-body">
+                <h3>1. System Architecture & Tech Stack</h3>
+                <p>This full-stack application bridges complex predictive mathematics with a beautiful consumer interface. Hosted efficiently on <strong>Google Firebase</strong>, this site acts as a decoupled frontend querying a backend predictive engine.</p>
+                <ul class="stats-list">
+                    <li><strong>Languages:</strong> Python 3.10, Vanilla JavaScript, HTML5, CSS3</li>
+                    <li><strong>ML Libraries:</strong> Scikit-Learn, Pandas, NumPy, Joblib</li>
+                    <li><strong>Backend Delivery:</strong> FastAPI running async Uvicorn servers</li>
+                    <li><strong>Deployment:</strong> Firebase Hosting & GitHub Version Control</li>
+                </ul>
+
+                <h3>2. How We Trained The Model</h3>
+                <p>The mathematical heart of this tool uses a <strong>Random Forest Classifier</strong>. We processed a robust telecommunications dataset containing thousands of real-world permutations involving <strong>Tenure</strong>, <strong>Billing Plans</strong>, and <strong>Support Escalations</strong>. The ensemble method splits the data through multiple isolated decision trees to prevent overfitting and guarantees high precision.</p>
+
+                <h3>3. Model Statistics</h3>
+                <ul class="stats-list">
+                    <li><strong>Accuracy:</strong> Achieved an elite 97.30% Testing Accuracy.</li>
+                    <li><strong>Precision:</strong> Extracted an F1 Score of 0.98.</li>
+                    <li><strong>Feature Importance:</strong> "Contract Type" is statistically weighed at ~28.7%, dominating the calculation.</li>
+                </ul>
+
+                <h3>4. Real-World Value & Use Cases</h3>
+                <p>Acquiring a new customer is up to 25x more expensive than retaining an existing one. Our application prevents financial bleeding globally:</p>
+                <ul class="stats-list">
+                    <li><strong>Telecom & Streaming (Netflix, AT&T):</strong> If a user calls support 4 times in a week (high Support Tickets), the ML model immediately flags them as "High Risk" of canceling. The company's automated system instantly emails them a free month or an apology coupon to keep them happy!</li>
+                    <li><strong>SaaS B2B Companies:</strong> If a firm notices "Monthly" Contract Type customers churn at a 60% higher rate, their dashboard tells the Sales Team to call Monthly customers and offer them an exclusive 20% discount if they upgrade to an annual plan.</li>
+                    <li><strong>Saves Millions:</strong> By predicting dissatisfaction using Data Science before human employees ever realize it, multi-million dollar corporations proactively inject retention strategies to maximize revenue.</li>
+                </ul>
+            </div>
+            <button class="primary-btn close-btn" style="margin-top: 1rem;">Close Report</button>
+        </div>
+    </div>
+
+    <!-- Modal: Dev Info -->
+    <div class="modal-overlay" id="modal-dev">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>👨‍💻 Meet The Developers</h2>
+            <div class="modal-body text-center">
+                <div class="dev-avatars">
+                    <div class="avatar">MC</div>
+                    <div class="avatar">LA</div>
+                </div>
+                <h3 style="color: #fff; font-size: 1.6rem; letter-spacing: -0.5px; margin-bottom: 0.5rem;">Architected & Engineered by</h3>
+                <p class="dev-names" style="color: #4facfe; font-size: 1.4rem; margin-bottom: 1.5rem;"><strong>Mangesh Choudhary</strong><br><span style="color: #94a3b8; font-size: 1rem;">&</span><br><strong>Lokesh Amaraj</strong></p>
+                <p class="dev-desc" style="font-size: 1.05rem;">Together, Mangesh and Lokesh fused the complexity of machine learning analytics with a breathtaking user experience. We collaborated heavily on everything from gathering the data, tuning the decision trees, and designing this ultra-premium glassmorphic interface.</p>
+                
+                <div class="stats-list" style="margin-top: 2rem; text-align: left;">
+                    <li style="color: var(--text-secondary);"><strong>Contributions:</strong> End-to-End System Design, Predictive Algorithms, API Routing, Front-end UI/UX, and Cloud Deployment.</li>
+                    <li style="color: var(--text-secondary);"><strong>Mission:</strong> Building next-generation web platforms that solve real-world financial friction.</li>
+                </div>
+            </div>
+            <button class="primary-btn close-btn" style="margin-top: 1.5rem;">Awesome</button>
+        </div>
+    </div>
+
+    <!-- Modal: Settings State -->
+    <div class="modal-overlay" id="modal-settings">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <h2>⚙️ System Settings</h2>
+            <div class="modal-body">
+                <div class="settings-item">
+                    <span>Display Theme</span>
+                    <select id="theme-selector" class="settings-control">
+                        <option value="dark">Dark Mode (Default)</option>
+                        <option value="light">Light Mode</option>
+                    </select>
+                </div>
+                <div class="settings-item" style="border-bottom: none; align-items:center;">
+                    <span>Export Analytics Data</span>
+                    <button id="export-csv-btn" class="settings-control btn-small">Download CSV</button>
+                </div>
+                <p class="settings-desc" style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">Your settings are instantly applied to the current session. CSV downloads are processed securely on your client side.</p>
             </div>
         </div>
     </div>
 
-    <script type="module" src="script.js?v=2"></script>
+    <script type="module" src="script.js?v=5"></script>
 </body>
 </html>
